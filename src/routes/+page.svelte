@@ -1,18 +1,53 @@
 <script>
     import logo from "$lib/assets/shed.png";
+    let animated = false;
+    let y=0;
+    $: y > 200 ? (animated = true) : (animated = false);
+   
+    function interpolate_color(color1, color2, factor) {
+      if (arguments.length < 3) {
+        factor = 0.5;
+      }
+      var result = color1.slice();
+      for (var i = 0; i < 3; i++) {
+        result[i] = Math.round(result[i] + factor * (color2[i] - color1[i]));
+      }
+      return result;
+    }
+
+    function get_factor_from_val(val, start_val, end_val) {
+      console.log(val, start_val, end_val)
+      return Math.min(1,Math.max(0,(val - start_val) / (end_val - start_val)));
+    }
+    let m = { x: 0, y: 0 };
+
+    function handleMousemove(event) {
+		m.x = event.clientX;
+		m.y = event.clientY;
+	}
 </script>
 
-<div class="top">
-        <img alt="The project logo" src={logo} width="500px" class='logo bounce' />
-        <div class="titles bounce">
-            <h1>Snickerbo</h1>
-            <p>Like Emil's woodshed, a holding company can play a role as a place of refuge or protection for its subsidiary companies. By owning and controlling these subsidiary companies, the holding company can provide them with financial support, strategic guidance, and other resources that they may need to thrive and grow.</p>
-          <!--   <p>In some cases, a holding company may also provide legal protection for its subsidiary companies, shielding them from liability and other risks that could threaten their operations or financial stability.</p>
-            <p>Overall, the role of a holding company is to manage and support its subsidiary companies, much like Emil's woodshed provides a safe space for him to think, reflect, and ultimately improve his behavior.</p>
-  -->
+
+<svelte:window bind:scrollY={y} />
+
+<div class="top" style='background-color: rgb({interpolate_color([190,200,190],[255,255,255],get_factor_from_val(m.y,300,700))})'  on:mousemove={handleMousemove}>
+        <img alt="The project logo" src={logo} class='logo bounce' />
+        <div class="titles" >
+            <h1 style='color: rgb({interpolate_color([255,255,255],[190,200,190],get_factor_from_val(m.y,300,700))})'  on:mousemove={handleMousemove}>Snickerbo</h1>
+            <p style='color: rgb({interpolate_color([255,255,255],[190,200,190],get_factor_from_val(m.y,300,700))})'  on:mousemove={handleMousemove}>Like Emil's woodshed, a holding company can play a role as a place of refuge or protection for its subsidiary companies. By owning and controlling these subsidiary companies, the holding company can provide them with financial support, strategic guidance, and other resources that they may need to thrive and grow.</p>
         </div>
 </div>
 
 
+
 <style>
+
+.hey{
+  position: relative;
+}
+
+/* .gradient {
+  background: linear-gradient(180deg, rgb(190, 200, 190) 0%, rgb(190, 200, 190) 60%, #f5f5f5 100%);
+  transition: linear 2s
+} */
 </style>
