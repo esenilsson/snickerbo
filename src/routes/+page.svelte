@@ -34,7 +34,7 @@
         <img alt="The project logo" src={logo} class='logo bounce' />
         <div class="titles" >
             <h1 style='color: rgb({interpolate_color([255,255,255],[190,200,190],get_factor_from_val(m.y,300,700))})'  on:mousemove={handleMousemove}>Snickerbo</h1>
-            <p style='color: rgb({interpolate_color([255,255,255],[190,200,190],get_factor_from_val(m.y,300,700))})'  on:mousemove={handleMousemove}>Like Emil's woodshed, a holding company can play a role as a place of refuge or protection for its subsidiary companies. By owning and controlling these subsidiary companies, the holding company can provide them with financial support, strategic guidance, and other resources that they may need to thrive and grow.</p>
+            <p style='color: rgb({interpolate_color([255,255,255],[190,200,190],get_factor_from_val(m.y,300,700))})'  on:mousemove={handleMousemove}>This is some text </p>
         </div>
 </div>
 
