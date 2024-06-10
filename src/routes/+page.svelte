@@ -24,14 +24,7 @@
             <!-- CTA -->
             <p class="buttons">
               <a
-                href="#start"
-                class="button k-button k-primary raised has-gradient is-fat is-bold"
-              >
-                <span class="text">Get Started</span>
-                <span class="front-gradient"></span>
-              </a>
-              <a
-                href="#"
+                href="/about"
                 class="button k-button k-primary raised has-gradient is-fat is-bold"
               >
                 <span class="text">Learn More</span>
