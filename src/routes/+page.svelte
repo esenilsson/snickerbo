@@ -1,53 +1,60 @@
 <script>
-    import logo from "$lib/assets/shed.png";
-    let animated = false;
-    let y=0;
-    $: y > 200 ? (animated = true) : (animated = false);
-   
-    function interpolate_color(color1, color2, factor) {
-      if (arguments.length < 3) {
-        factor = 0.5;
-      }
-      var result = color1.slice();
-      for (var i = 0; i < 3; i++) {
-        result[i] = Math.round(result[i] + factor * (color2[i] - color1[i]));
-      }
-      return result;
-    }
-
-    function get_factor_from_val(val, start_val, end_val) {
-      console.log(val, start_val, end_val)
-      return Math.min(1,Math.max(0,(val - start_val) / (end_val - start_val)));
-    }
-    let m = { x: 0, y: 0 };
-
-    function handleMousemove(event) {
-		m.x = event.clientX;
-		m.y = event.clientY;
-	}
+  import logo from "$lib/assets/shed3.webp";
 </script>
 
-
-<svelte:window bind:scrollY={y} />
-
-<div class="top" style='background-color: rgb({interpolate_color([190,200,190],[255,255,255],get_factor_from_val(m.y,300,700))})'  on:mousemove={handleMousemove}>
-        <img alt="The project logo" src={logo} class='logo bounce' />
-        <div class="titles" >
-            <h1 style='color: rgb({interpolate_color([255,255,255],[190,200,190],get_factor_from_val(m.y,300,700))})'  on:mousemove={handleMousemove}>Snickerbo</h1>
-            <p style='color: rgb({interpolate_color([255,255,255],[190,200,190],get_factor_from_val(m.y,300,700))})'  on:mousemove={handleMousemove}>This is some text </p>
+<div class="dark-wrapper">
+  <!-- Landing page Hero -->
+  <section class="hero is-fullheight is-transparent">
+    <!-- Hero Image and Title -->
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <!-- Landing page Title -->
+          <div class="column is-5 landing-caption">
+            <h1 class="title is-1 is-light is-semibold is-spaced main-title">
+              Snickerbo
+            </h1>
+            <h2 class="subtitle is-5 is-light is-thin">
+              Like Emil's woodshed, a holding company can play a role as a place
+              of refuge or protection for its subsidiary companies. By owning
+              and controlling these subsidiary companies, the holding company
+              can provide them with financial support, strategic guidance, and
+              other resources that they may need to thrive and grow.
+            </h2>
+            <!-- CTA -->
+            <p class="buttons">
+              <a
+                href="#start"
+                class="button k-button k-primary raised has-gradient is-fat is-bold"
+              >
+                <span class="text">Get Started</span>
+                <span class="front-gradient"></span>
+              </a>
+              <a
+                href="#"
+                class="button k-button k-primary raised has-gradient is-fat is-bold"
+              >
+                <span class="text">Learn More</span>
+                <span class="front-gradient"></span>
+              </a>
+            </p>
+          </div>
+          <!-- Hero image -->
+          <div class="column is-7">
+            <figure class="image">
+              <img src={logo} alt="" />
+            </figure>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 </div>
 
-
-
 <style>
-
-.hey{
-  position: relative;
+  .dark-wrapper {
+  background-color: gradient(to right, #6f6c6c, #6c6363);
+  color: #fff;
+  
 }
-
-/* .gradient {
-  background: linear-gradient(180deg, rgb(190, 200, 190) 0%, rgb(190, 200, 190) 60%, #f5f5f5 100%);
-  transition: linear 2s
-} */
 </style>

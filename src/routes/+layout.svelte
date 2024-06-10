@@ -1,6 +1,4 @@
-<script>
-    import '../app.css'
-  </script>
-  
-  <slot />
-  
+
+<script>import "bulma/css/bulma.css";</script>
+
+<slot></slot><style></style>
